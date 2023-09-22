@@ -1,0 +1,14 @@
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\bin\Debug\net7.0\Slagsmålspel.exe
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\bin\Debug\net7.0\Slagsmålspel.deps.json
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\bin\Debug\net7.0\Slagsmålspel.runtimeconfig.json
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\bin\Debug\net7.0\Slagsmålspel.dll
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\bin\Debug\net7.0\Slagsmålspel.pdb
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\Slagsmålspel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\Slagsmålspel.AssemblyInfoInputs.cache
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\Slagsmålspel.AssemblyInfo.cs
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\Slagsmålspel.csproj.CoreCompileInputs.cache
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\Slagsmålspel.dll
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\refint\Slagsmålspel.dll
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\Slagsmålspel.pdb
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\Slagsmålspel.genruntimeconfig.cache
+C:\Users\neo.rosenlund\Documents\programmering-betyguppgift\Slagsmålspel\Slagsmålspel\obj\Debug\net7.0\ref\Slagsmålspel.dll
