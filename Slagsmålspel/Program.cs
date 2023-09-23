@@ -1,7 +1,7 @@
 ﻿using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 
-// Fix infinite loop on CFAABC and CFCHARACTERPOSSIBILITIES
+
 
 
 
@@ -50,9 +50,9 @@ Console.Clear();
 //----------------------------------------------------------------------------------------
 void CFAABC(){
     //CheckForAnswerABC
-    Answer = (Console.ReadLine() ?? "").ToUpper();
+   
 while(true){
-    
+Answer = (Console.ReadLine() ?? "").ToUpper();   
  if(ABCList.Contains(Answer) == true){
         break;
 }else{
@@ -64,12 +64,12 @@ while(true){
 //----------------------------------------------------------------------------------------
 void CFCHARACTERPOSSIBILITIES(){
     //CheckForCharacterPossibilities
-    Answer = (Console.ReadLine() ?? "").ToUpper();
-while(true){
     
- if(playernames.Contains(Answer) == true){
+while(true){
+Answer = (Console.ReadLine() ?? "").ToUpper();
+    if(playernames.Contains(Answer) == true){
         break;
-}else{
+}   else{
         Console.WriteLine("please write a possible answer!");
 }
 }
