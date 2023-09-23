@@ -2,7 +2,7 @@ using System.Reflection.Metadata.Ecma335;
 
 public class Character{
     
-string Name;
+public string Name;
 public double Damage,Hp,Armour, Speed;
 double crit = 1;
 Random Generator = new Random();
@@ -26,10 +26,13 @@ return Math.Round(crit*(Damage*0.25*Generator.Next(1,3))*((Armour/2)*0.01));
 }
 
 public void Displaystats(){
-Console.WriteLine($"\n\n{Name} has {Hp} hitpoints");
-Console.WriteLine($"{Name} has {Damage} Damage");
-Console.WriteLine($"{Name} has {Speed} Speed");
-Console.WriteLine($"{Name} has {Armour} Armour");
+Console.ForegroundColor = ConsoleColor.Red;
+Console.WriteLine($"\n{Name}");
+Console.ResetColor();
+Console.WriteLine($"{Hp} hitpoints");
+Console.WriteLine($"{Damage} Damage");
+Console.WriteLine($"{Speed} Speed");
+Console.WriteLine($"{Armour} Armour");
 }
 }
 
