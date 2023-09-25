@@ -1,7 +1,7 @@
 ﻿using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 
-//Armor system does not work
+//lägg till så att man kan skapa nya karaktärer
 
 
 
@@ -10,7 +10,7 @@ string[] ABCList = {"A","B","C"};
 string Answer="";
 Random Generator1 = new Random();
 //Karaktärernas stats återspeglar inte åsikter, karaktärsdrag eller liknande om personen/na!
-// character x = new character(name,damage,health,armor,speed,move1,move1damage,move1hitchance,move2,move2damage,move2hitchance)
+// character x = new character(name,damage,health,armor,speed,move1,move1damage,move1hitchance,move2,move2damage,move2hitchance,id)
 Character Player1 = new Character("Micke", 60,100,40,50,"Skjut lasrar ur dina röda ögon",1,0.9,"Ta hjälp av japanare",3,0.4,1);
 Character Player2 = new Character("Martin",80, 110, 30,30,"använd TOUCHPADEN!",2,0.7,"använd din mus",0.9,1,2);
 Character Player3 = new Character("Huglin",70, 60, 20,100,"Goblin GANG", 1.5,0.8,"Dissa skolmaten",1,1,3);
@@ -35,7 +35,6 @@ if(Answer == "A"){
     break;
 }else if(Answer == "B"){
 
-Console.WriteLine("Any Resemblance of a real character is mere coincidence.");
 Console.Clear();
 foreach(Character Character in Players){
 Character.Displaystats();
@@ -45,15 +44,13 @@ Console.ReadKey();
 Console.Clear();
 
 }else{
-    Console.WriteLine("else (Quit)");
     Environment.Exit(0);
     }
 }
 }
 //----------------------------------------------------------------------------------------
 void CFAABC(){
-    //CheckForAnswerABC
-   
+//checks if the given answer is either A, B, or C
 while(true){
 Answer = (Console.ReadLine() ?? "").ToUpper();   
  if(ABCList.Contains(Answer) == true){
@@ -67,7 +64,7 @@ Answer = (Console.ReadLine() ?? "").ToUpper();
 //----------------------------------------------------------------------------------------
 void CFCHARACTERPOSSIBILITIES(string phase){
     //CheckForCharacterPossibilities
-    
+//checks depending on which phase of the game about if the given answer is possible.
 while(true){
 int Trying;
 Answer = Console.ReadLine() ?? "";
@@ -109,7 +106,7 @@ foreach(Character Character in Players){
 }
 
 CFCHARACTERPOSSIBILITIES("characterdecision");
-p1 = Players[Convert.ToInt32(Answer)-1];
+p1 = Players[Convert.ToInt32(Answer)-1]; //sets that player 1 = given answer
 Console.Clear();
 Console.WriteLine("\nPlayer 2 choose your character");
 Thread.Sleep(1000);
@@ -126,6 +123,7 @@ rounds();
 }
 //----------------------------------------------------------------------------------------
 void attackphase(string attacker){
+// Decides which of the attacks the player has chosen, calculates damage, removes it from opponent hp
 if(attacker == "player1"){
     Console.WriteLine($"\nWhat should player1's {p1.Name} do");
     Console.WriteLine($"1: {p1.attack1}         2: {p1.attack2}");
@@ -142,7 +140,7 @@ else if(Convert.ToInt32(Answer) == 2){
     Console.ResetColor();
 
 //----
-
+//same as above, but if the attacker is player2
 }else if(attacker == "player2"){
     Console.WriteLine($"\nWhat should player2's {p2.Name} do");
     Console.WriteLine($"1: {p2.attack1}         2: {p2.attack2}");
@@ -170,27 +168,28 @@ while(true){
     Console.WriteLine($"Round: {round}");
     Console.ResetColor();
     Console.WriteLine($"player1's {p1.Name} has {p1.Hp} health.         Player2's {p2.Name} has {p2.Hp} health.");
-
+//the different types of possibilities depending on who is quicker
 if(p1.Speed > p2.Speed){
-attackphase("player1");
-attackphase("player2");
-Thread.Sleep(4000);
+    attackphase("player1");
+    attackphase("player2");
+    Thread.Sleep(4000);
 }else if(p1.Speed < p2.Speed){
-attackphase("player2");
-attackphase("player1");
-Thread.Sleep(4000);
+    attackphase("player2");
+    attackphase("player1");
+    Thread.Sleep(4000);
 }else if(p1.Speed == p2.Speed){
     int randomorder = Generator1.Next(1,2);
-    if(randomorder == 1){
-        attackphase("player1");
-        attackphase("player2");
-        Thread.Sleep(4000);
+        if(randomorder == 1){
+            attackphase("player1");
+            attackphase("player2");
+            Thread.Sleep(4000);
     }else if(randomorder == 2){
-        attackphase("player2");
-        attackphase("player1");
-        Thread.Sleep(4000);
+            attackphase("player2");
+            attackphase("player1");
+            Thread.Sleep(4000);
     }
 }
+//checks which player won
 if(p1.Hp <= 0){
     Console.WriteLine($"Player2's {p2.Name} won!!");
     break;
