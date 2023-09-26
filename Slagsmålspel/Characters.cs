@@ -35,10 +35,11 @@ public double Attack1DamageCalculator(double OpponentArmour){
     }
 //makes it random if the character will hit the opponent or not, based on the specific attacks hitchance
 if(Generator.Next(1,100)<=(attack1hitchance*100)){
-Console.WriteLine($"{attack1damage*crit*(Damage*0.4)*(1-((OpponentArmour/2)*0.01))} damage");
-return Math.Round(attack1damage*crit*(Damage*0.4)*(1-((OpponentArmour/2)*0.01)));
+Console.WriteLine($"{Name} used {attack1}");
+Console.WriteLine($"{attack1damage*crit*(Damage*0.4)*(1-(OpponentArmour/2*0.01))} damage");
+return Math.Round(attack1damage*crit*(Damage*0.4)*(1-(OpponentArmour/2*0.01)));
 }else{
-    Console.WriteLine("you missed!");
+    Console.WriteLine("Miss!");
     return 0;
 }
 }
@@ -53,10 +54,11 @@ public double Attack2DamageCalculator(Double OpponentArmour){
         crit = 1;
     }
 if(Generator.Next(1,100)<=(attack2hitchance*100)){
-Console.WriteLine($"{attack2damage*crit*(Damage*0.4)*(1-((OpponentArmour/2)*0.01))} damage");
-return Math.Round(attack2damage*crit*(Damage*0.4)*(1-((OpponentArmour/2)*0.01)));
+Console.WriteLine($"{Name} used {attack2}");
+Console.WriteLine($"{attack2damage*crit*(Damage*0.4)*(1-(OpponentArmour/2*0.01))} damage");
+return Math.Round(attack2damage*crit*(Damage*0.4)*(1-(OpponentArmour/2*0.01)));
 }else{
-    Console.WriteLine("you missed!");
+    Console.WriteLine("Miss!");
     return 0;
 }
 }
