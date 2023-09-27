@@ -41,13 +41,12 @@ Thread.Sleep(5000);
 string[] ABCList = { "A", "B", "C" };
 string Answer = "";
 Random Generator1 = new Random();
-
 // character x = new character(name,damage,health,armor,speed,move1,move1damage,move1hitchance,move2,move2damage,move2hitchance,id)
 Character Player1 = new Character("Micke", 60, 100, 40, 50, "Skjut lasrar ur dina röda ögon", 1, 0.9, "Ta hjälp av japanare", 3, 0.4, 1);
 Character Player2 = new Character("Martin", 80, 110, 30, 30, "använd TOUCHPADEN!", 2, 0.7, "använd din mus, primitivt!", 0.9, 0.9, 2);
 Character Player3 = new Character("Huglin", 70, 60, 20, 100, "Goblin GANG", 1.5, 0.8, "Dissa skolmaten", 1, 0.95, 3);
-Character Player4 = new Character("Vera", 30, 50, 100, 70, "DU har redovisnig imorgon", 2, 0.7, "Se maxis långfinger och använd 100000J i attack", 4, 0.5, 4);
-Character Player5 = new Character("Nicholas", 20, 120, 100, 10, "ANVÄND NEWTONS 0'TE LAG", 10, 0.3, "Mät motståndaren med KrukVäxten i sal A6!", 1.2, 0.9, 5);
+Character Player4 = new Character("Finsk fisk", 30, 50, 100, 70, "DU har redovisnig imorgon", 2, 0.7, "Prata finska", 4, 0.5, 4);
+Character Player5 = new Character("Einstein", 20, 120, 100, 10, "ANVÄND NEWTONS 0'TE LAG", 10, 0.3, "Mät motståndaren med KrukVäxten i sal A6!", 1.2, 0.9, 5);
 Character Player6 = new Character("Rådet", 100, 50, 10, 90, "Bryt era egna regler, genom korrupta handlingar", 1, 0.9, "laga en 3d-printer", 2, 0.7, 6);
 Character Player7 = new Character("Atom-bomb", 201, 49, 0, 0, "Explose on the opponent", 10, 0.3, "Launch a fake bomb", 0.1, 1, 7);
 List<Character>Players = new List<Character>{Player1,Player2,Player3,Player4,Player5,Player6,Player7};  //flexilble list which enables player to make new character
