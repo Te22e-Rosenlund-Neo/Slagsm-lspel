@@ -146,7 +146,7 @@ void MakeCustomCharacter() //to make a custom character that can be used, but is
     string name = Console.ReadLine() ?? "";
 ;    Console.Clear();
 
-    ColorSwap("you have 250 points to use on 4 stats", "Green");    
+    ColorSwap("you have 250 points to use on 4 stats. No stat can exceed 199", "Green");    
     Console.WriteLine("choose strength");                       //choose strength stat
     Points -= CheckLogicForCC(Points);
     int Strength = Convert.ToInt32(Value);
@@ -179,10 +179,11 @@ int CheckLogicForCC(int Points){  //checks if the users input is a int, and if t
     int Trying;
     while(true){
          Value = Console.ReadLine() ?? "";
-            if(int.TryParse(Value, out Trying) && Convert.ToInt32(Value) <= Points && Convert.ToInt32(Value) >= 0){
+            if(int.TryParse(Value, out Trying) && Convert.ToInt32(Value) <= Points && Convert.ToInt32(Value) >= 0 && Convert.ToInt32(Value) <= 199){
                 break;
             }else{
                 Console.WriteLine("Not possible!");
+                Console.WriteLine("You exceeded your point amount, wrote a non numerical value or writed a value above 199");
         }
 }
 return Convert.ToInt32(Value);
