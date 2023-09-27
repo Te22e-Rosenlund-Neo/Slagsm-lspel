@@ -183,7 +183,7 @@ int CheckLogicForCC(int Points){  //checks if the users input is a int, and if t
                 break;
             }else{
                 Console.WriteLine("Not possible!");
-                Console.WriteLine("You exceeded your point amount, wrote a non numerical value or writed a value above 199");
+                Console.WriteLine("You exceeded your point amount, wrote a non numerical value or wrote a value above 199");
         }
 }
 return Convert.ToInt32(Value);
