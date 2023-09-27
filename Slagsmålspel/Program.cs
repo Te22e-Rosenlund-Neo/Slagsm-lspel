@@ -41,7 +41,7 @@ Thread.Sleep(5000);
 string[] ABCList = { "A", "B", "C" };
 string Answer = "";
 Random Generator1 = new Random();
-//Karaktärernas stats återspeglar inte åsikter, karaktärsdrag eller liknande om personen/na!
+
 // character x = new character(name,damage,health,armor,speed,move1,move1damage,move1hitchance,move2,move2damage,move2hitchance,id)
 Character Player1 = new Character("Micke", 60, 100, 40, 50, "Skjut lasrar ur dina röda ögon", 1, 0.9, "Ta hjälp av japanare", 3, 0.4, 1);
 Character Player2 = new Character("Martin", 80, 110, 30, 30, "använd TOUCHPADEN!", 2, 0.7, "använd din mus, primitivt!", 0.9, 0.9, 2);
@@ -50,8 +50,10 @@ Character Player4 = new Character("Vera", 30, 50, 100, 70, "DU har redovisnig im
 Character Player5 = new Character("Nicholas", 20, 120, 100, 10, "ANVÄND NEWTONS 0'TE LAG", 10, 0.3, "Mät motståndaren med KrukVäxten i sal A6!", 1.2, 0.9, 5);
 Character Player6 = new Character("Rådet", 100, 50, 10, 90, "Bryt era egna regler, genom korrupta handlingar", 1, 0.9, "laga en 3d-printer", 2, 0.7, 6);
 Character Player7 = new Character("Atom-bomb", 201, 49, 0, 0, "Explose on the opponent", 10, 0.3, "Launch a fake bomb", 0.1, 1, 7);
-Character[] Players = { Player1, Player2, Player3, Player4, Player5, Player6, Player7};
+List<Character>Players = new List<Character>{Player1,Player2,Player3,Player4,Player5,Player6,Player7};  //flexilble list which enables player to make new character
+int idCount = 7;        //id count is used to create new characters later on
 
+//p1,p2 is the variable that saves the players character
 Character p1;
 Character p2;
 bool IsAiChosen;
@@ -60,13 +62,13 @@ GameOpeningChoice();
 //----------------------------------------------------------------------------------------
 void GameOpeningChoice()
 {
-    //launches at game start
+    //launches at game start, sime menu
     while (true)
     {
         Console.Clear();
         Console.WriteLine("\n\nWhat would you like to do?");
         Console.WriteLine("A: Play game");
-        Console.WriteLine("B: View Characters");
+        Console.WriteLine("B: Character menu");
         Console.WriteLine("C: Quit the game");
         CFAABC();
         GameMenu();
@@ -74,7 +76,7 @@ void GameOpeningChoice()
     }
 }
 //----------------------------------------------------------------------------------------
-void GameMenu()
+void GameMenu() //Handles the options that can be written in gameopeningchoice, could be written in that functon as well
 {
     while (true)
     {
@@ -132,7 +134,7 @@ void CharacterMenu()
 void MakeCustomCharacter()
 {
     int points = 250;
-
+    idCount++;
 
 
     Console.Clear();
@@ -164,8 +166,8 @@ void MakeCustomCharacter()
     int speed = Convert.ToInt32(Value);
     Console.Clear();
 
-    Character player8 = new Character(name,strength,health,armour,speed,"move1",1,0.9,"move2",3,0.7,8);
-    Players[7] = player8;
+    Character Name = new Character(name,strength,health,armour,speed,"move1",1,0.9,"move2",3,0.7,idCount);
+    Players.Add(Name);
     CharacterMenu();
 }
 //----------------------------------------------------------------------------------------
@@ -173,7 +175,7 @@ int CheckLogicForCC(int points){
     int Trying;
     while(true){
          Value = Console.ReadLine() ?? "";
-            if(int.TryParse(Value, out Trying) && Convert.ToInt32(Value) <= points){
+            if(int.TryParse(Value, out Trying) && Convert.ToInt32(Value) <= points && Convert.ToInt32(Value) >= 0){
                 break;
             }else{
                 Console.WriteLine("not possible!");
@@ -232,7 +234,7 @@ void GameStarted()
     }
     else
     {
-        p2 = Players[Generator1.Next(1, Players.Length)];
+        p2 = Players[Generator1.Next(1, Players.Count())];
     }
 
     Console.WriteLine($"Player1 is {p1.Name}");
@@ -358,7 +360,7 @@ void CheckForCharacterPossibilities(string phase)
         Answer = Console.ReadLine() ?? "";
         if (phase == "characterdecision")
         {
-            if (!int.TryParse(Answer, out Trying) || Convert.ToInt32(Answer) > Players.Length || Convert.ToInt32(Answer) < 0)
+            if (!int.TryParse(Answer, out Trying) || Convert.ToInt32(Answer) > Players.Count() || Convert.ToInt32(Answer) < 0)
             {
                 Console.WriteLine("please type a possible character!");
             }
