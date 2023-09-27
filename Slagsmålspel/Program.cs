@@ -77,7 +77,7 @@ void GameOpeningChoice()
 }
 //----------------------------------------------------------------------------------------
 void GameMenu() //Handles the options that can be written in gameopeningchoice, could be written in that functon as well
-{
+{              
     while (true)
     {
         if (Answer == "A")
@@ -95,6 +95,7 @@ void GameMenu() //Handles the options that can be written in gameopeningchoice, 
         }
         else
         {
+            //quits the game.
             Environment.Exit(0);
         }
     }
@@ -102,6 +103,7 @@ void GameMenu() //Handles the options that can be written in gameopeningchoice, 
 //----------------------------------------------------------------------------------------
 void CharacterMenu()
 {
+    //if you chose to enter charactermenu above
     Console.WriteLine("Choose an option");
     Console.WriteLine("A: Create a new Character");
     Console.WriteLine("B: View current characters");
@@ -116,7 +118,7 @@ void CharacterMenu()
         Console.Clear();
         foreach (Character Character in Players)
         {
-            Character.Displaystats();
+            Character.Displaystats();           //shows the statistics/information of every character
         }
         Console.WriteLine("Press any key to continue");
         Console.ReadKey();
@@ -131,47 +133,48 @@ void CharacterMenu()
 
 }
 //----------------------------------------------------------------------------------------
-void MakeCustomCharacter()
+void MakeCustomCharacter() //to make a custom character that can be used, but is only stored for the duration of runtime
 {
+    //points = total amount of points to spend on stats
     int points = 250;
     idCount++;
 
 
     Console.Clear();
-    Console.WriteLine("Write a name");
+    Console.WriteLine("Write a name");          //make a name
     string name = Console.ReadLine() ?? "";
 ;    Console.Clear();
 
-    colorswap("you have 250 points to use on 4 stats", "Green");
-    Console.WriteLine("choose strength");
+    colorswap("you have 250 points to use on 4 stats", "Green");    
+    Console.WriteLine("choose strength");                       //choose strength stat
     points -= CheckLogicForCC(points);
     int strength = Convert.ToInt32(Value);
     Console.Clear();
 
     colorswap($"you have {points} points left", "Green");
-    Console.WriteLine("choose health");
+    Console.WriteLine("choose health");                     //choose health
     points -= CheckLogicForCC(points);
     int health = Convert.ToInt32(Value);
     Console.Clear();
 
     colorswap($"you have {points} points left", "Green");
     Console.WriteLine("choose Armour (reduces opponents damage will be reduced)");
-    points -= CheckLogicForCC(points);
+    points -= CheckLogicForCC(points);                                              //choose armor amount
     int armour = Convert.ToInt32(Value);
     Console.Clear();
 
     colorswap($"you have {points} points left", "Green");
     Console.WriteLine("Choose speed");
-    points -= CheckLogicForCC(points);
+    points -= CheckLogicForCC(points);                      //choose speed amount
     int speed = Convert.ToInt32(Value);
     Console.Clear();
 
     Character Name = new Character(name,strength,health,armour,speed,"move1",1,0.9,"move2",3,0.7,idCount);
-    Players.Add(Name);
+    Players.Add(Name);          // ^ creates a new character based on input, however the moves and its damage is already set
     CharacterMenu();
 }
 //----------------------------------------------------------------------------------------
-int CheckLogicForCC(int points){
+int CheckLogicForCC(int points){  //checks if the users input is a int, and if the value is possible in this context. used in function above
     int Trying;
     while(true){
          Value = Console.ReadLine() ?? "";
@@ -187,8 +190,8 @@ return Convert.ToInt32(Value);
 
 }
 //----------------------------------------------------------------------------------------
-void GameMode()
-{
+void GameMode() //self explanatory
+{ 
     Console.WriteLine("A: Player vs Player");
     Console.WriteLine("B: Player vs bot");
     Console.WriteLine("C: Go back");
@@ -200,7 +203,7 @@ void GameMode()
     }
     else if (Answer == "B")
     {
-        IsAiChosen = true;
+        IsAiChosen = true;  //IsAiChosen makes the seconds player become an automatic robot.
         GameStarted();
     }
     else
@@ -209,19 +212,19 @@ void GameMode()
     }
 }
 //----------------------------------------------------------------------------------------
-void GameStarted()
+void GameStarted() //runtime, prompts the player/s to choose a character
 {
     Console.WriteLine("\nPlayer 1 choose your character");
     Thread.Sleep(1000);
     foreach (Character Character in Players)
     {
-        Character.Displaystats();
+        Character.Displaystats();  //displays all characters
     }
 
     CheckForCharacterPossibilities("characterdecision");
     p1 = Players[Convert.ToInt32(Answer) - 1]; //sets that player 1 = given answer
     Console.Clear();
-    Console.WriteLine("\nPlayer 2 choose your character");
+    Console.WriteLine("\nPlayer 2 choose your character");  //only happens if a player vs player mode is chosen.
     Thread.Sleep(1000);
     foreach (Character Character in Players)
     {
@@ -229,7 +232,7 @@ void GameStarted()
     }
     if (IsAiChosen == false)
     {
-        CheckForCharacterPossibilities("characterdecision");
+        CheckForCharacterPossibilities("characterdecision");  //fucntion that choses which character the Bot choses
         p2 = Players[Convert.ToInt32(Answer) - 1];
     }
     else
@@ -243,14 +246,14 @@ void GameStarted()
     rounds();
 }
 //----------------------------------------------------------------------------------------
-void rounds()
+void rounds()  //starts the run phase, which only ends when one or both players have died
 {
     int round = 0;
     while (true)
     {
         round++;
         Console.Clear();
-        colorswap($"Round: {round}", "Green");
+        colorswap($"Round: {round}", "Green"); //colorswap adds a color to the given text
         Console.WriteLine($"player1's {p1.Name} has {p1.Hp} health.         Player2's {p2.Name} has {p2.Hp} health.");
         //the different types of possibilities depending on who is quicker
         if (p1.Speed > p2.Speed)
@@ -279,7 +282,7 @@ void rounds()
             attackphase("player1");
             Thread.Sleep(3000);
         }
-        else if (p1.Speed == p2.Speed)
+        else if (p1.Speed == p2.Speed) //if their speed is equal, we randomize who attacks first each round
         {
             int randomorder = Generator1.Next(1, 2);
             if (randomorder == 1)
@@ -334,11 +337,11 @@ void rounds()
 //----------------------------------------------------------------------------------------
 void CFAABC()
 {
-    //checks if the given answer is either A, B, or C
+    //checks if the given answer is either A, B, or C. used in menus
     while (true)
     {
-        Answer = (Console.ReadLine() ?? "").ToUpper();
-        if (ABCList.Contains(Answer) == true)
+        Answer = (Console.ReadLine() ?? "").ToUpper();    // question marks with "" at the end, makes that if the players answer = null, it becomes an empty string
+        if (ABCList.Contains(Answer) == true)   //ABC list contains {"A", "B", "C"}
         {
             break;
         }
@@ -358,7 +361,7 @@ void CheckForCharacterPossibilities(string phase)
     {
         int Trying;
         Answer = Console.ReadLine() ?? "";
-        if (phase == "characterdecision")
+        if (phase == "characterdecision")   //if a characters should be chosen
         {
             if (!int.TryParse(Answer, out Trying) || Convert.ToInt32(Answer) > Players.Count() || Convert.ToInt32(Answer) < 0)
             {
@@ -369,11 +372,11 @@ void CheckForCharacterPossibilities(string phase)
                 break;
             }
         }
-        else if (phase == "attackdecision")
+        else if (phase == "attackdecision")  //if the attacks should be displayed and chosen
         {
-            if (!int.TryParse(Answer, out Trying) || Convert.ToInt32(Answer) < 0 || Convert.ToInt32(Answer) > 2)
-            {
-                Console.WriteLine("write a possible move!!!! (1-2)");
+            if (!int.TryParse(Answer, out Trying) || Convert.ToInt32(Answer) < 0 || Convert.ToInt32(Answer) > 2) 
+            { 
+                Console.WriteLine("write a possible move!!!! (1-2)");  //either move 1 or two
             }
             else
             {
@@ -383,9 +386,9 @@ void CheckForCharacterPossibilities(string phase)
     }
 }
 //----------------------------------------------------------------------------------------
-void colorswap(string Text, string color)
+void colorswap(string Text, string color)  //chagnes the color of the given text, depending on which color has been chosen
 {
-    if (color == "Red")
+    if (color == "Red")  //only red and green color is a part of the game
     {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine(Text);
@@ -405,14 +408,14 @@ void attackphase(string attacker)
     // Decides which of the attacks the player has chosen, calculates damage, removes it from opponent hp
     if (attacker == "player1")
     {
-        Console.WriteLine($"\nWhat should player1's {p1.Name} do");
+        Console.WriteLine($"\nWhat should player1's {p1.Name} do");  
         Thread.Sleep(2000);
-        Console.WriteLine($"1: {p1.attack1}         2: {p1.attack2}");
+        Console.WriteLine($"1: {p1.attack1}         2: {p1.attack2}");  //displays the attacks, besides each other.
         CheckForCharacterPossibilities("attackdecision");
 
         if (Convert.ToInt32(Answer) == 1)
         {
-            p2.Hp -= p1.Attack1DamageCalculator(p2.Armour);
+            p2.Hp -= p1.Attack1DamageCalculator(p2.Armour); //removes hp from opponent
         }
         else if (Convert.ToInt32(Answer) == 2)
         {
@@ -441,7 +444,7 @@ void attackphase(string attacker)
     }
 }
 //----------------------------------------------------------------------------------------
-void AIOpp()
+void AIOpp() //generates a random attack for the AI/bot opponent. Either attack 1 or 2.
 {
 
     int AiAnswer = Generator1.Next(1, 2);
