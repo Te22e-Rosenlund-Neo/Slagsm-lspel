@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
-//lägg till så att man kan skapa nya karaktärer
+//title
 Console.WriteLine(@"
 
 
@@ -315,19 +315,20 @@ void Rounds()  //starts the run phase, which only ends when one or both players 
             }
         }
         //checks which player won
-        if (P1.Hp <= 0)
+        if (P1.Hp <= 0 && P2.Hp <= 0)
         {
-            ColorSwap($"Player2's {P2.Name} won!!", "Green");
+            ColorSwap($"The game ended in a stalemate!!", "Green");
             break;
+            
         }
-        else if (P2.Hp <= 0)
+        else if (P1.Hp <= 0)
         {
             ColorSwap($"Player1's {P1.Name} won!!", "Green");
             break;
         }
-        else if (P1.Hp <= 0 && P2.Hp <= 0)
+        else if (P2.Hp <=0)
         {
-            ColorSwap($"The game ended in a stalemate!!", "Green");
+          ColorSwap($"Player2's {P2.Name} won!!", "Green");
             break;
         }
 
@@ -412,7 +413,7 @@ void AttackPhase(string Attacker)
     {
         Console.WriteLine($"\nWhat should player1's {P1.Name} do");  
         Thread.Sleep(2000);
-        Console.WriteLine($"1: {P1.attack1}         2: {P1.attack2}");  //displays the attacks, besides each other.
+        Console.WriteLine($"1: {P1.Attack1}         2: {P1.Attack2}");  //displays the attacks, besides each other.
         CheckForCharacterPossibilities("attackdecision");
 
         if (Convert.ToInt32(Answer) == 1)
@@ -430,7 +431,7 @@ void AttackPhase(string Attacker)
     else if (Attacker == "player2")
     {
         Console.WriteLine($"\nWhat should player2's {P2.Name} do");
-        Console.WriteLine($"1: {P2.attack1}         2: {P2.attack2}");
+        Console.WriteLine($"1: {P2.Attack1}         2: {P2.Attack2}");
         CheckForCharacterPossibilities("attackdecision");
 
         if (Convert.ToInt32(Answer) == 1)
