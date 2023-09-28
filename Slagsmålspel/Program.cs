@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
-//title
+                                                    //title
 Console.WriteLine(@"
 
 
@@ -37,6 +37,8 @@ Console.WriteLine(@"
                                         ░                                              
 ");
 Thread.Sleep(5000);
+
+//just a declaration of some variables
 
 string[] ABCList = { "A", "B", "C" };
 string Answer = "";
@@ -323,12 +325,12 @@ void Rounds()  //starts the run phase, which only ends when one or both players 
         }
         else if (P1.Hp <= 0)
         {
-            ColorSwap($"Player1's {P1.Name} won!!", "Green");
+            ColorSwap($"Player2's {P2.Name} won!!", "Green");
             break;
         }
         else if (P2.Hp <=0)
         {
-          ColorSwap($"Player2's {P2.Name} won!!", "Green");
+          ColorSwap($"Player1's {P1.Name} won!!", "Green");
             break;
         }
 
